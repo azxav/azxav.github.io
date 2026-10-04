@@ -33,8 +33,8 @@ void main(){
   float speck=smoothstep(rad,rad*0.25,length(f-0.5-jitter*0.45));
   float gate=mix(0.93,0.7,band)-pull*0.16;
   float on=step(gate,tw);
-  float alpha=speck*on*mix(0.25,0.7,band);
-  alpha*=smoothstep(0.97,0.62,p.y);
+  float alpha=speck*on*mix(0.16,0.48,band);
+  alpha*=smoothstep(0.96,0.58,p.y);
   vec3 col=mix(vec3(0.07,0.07,0.065),vec3(0.93,0.92,0.89),uDark);
   gl_FragColor=vec4(col,alpha);
 }`;
