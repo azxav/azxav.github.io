@@ -48,14 +48,9 @@ Pushing to `main` runs two workflows:
 
 In the repository settings, set Pages → Build and deployment → Source to **GitHub Actions**. The site is served from the domain root (`https://azxav.github.io`), which matches a repository named `azxav.github.io`.
 
-## Open TODOs
+## Content notes
 
-These need real content from Azizbek. The site marks the first two on the page. It does not guess.
-
-1. **2Brain — What I built.** The page describes a corporate AI assistant with a managed memory layer, built on Garry Tan’s licensed gbrain. It does not list which parts Azizbek authored.
-2. **Kaggle S6E3 — Approach.** Rank on the site is 57 of 4,143. The repository README does not describe the model, features, or validation.
-3. **Phone.** The résumé contact line reads `20 0034064`, which is not a complete phone number. It is omitted until he confirms one.
-4. **Russian.** The résumé lists Russian with no proficiency level.
+Phone is omitted. Russian is listed with no proficiency level. 2Brain links to the live product at [2brainai.tech](https://2brainai.tech) and credits Garry Tan’s licensed gbrain. Kaggle S6E3 is rank 57 of 4,142, score 0.91824.
 
 ## Notes
 

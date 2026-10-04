@@ -52,6 +52,6 @@ export const profile = {
     "URBAN.TECH Hackathon, 1st place in INDUSTRY TECH",
     "Ideathon at the 4th World Conference on Creative Economy, honourable mention",
     "CBU coding challenge, 3rd place",
-    "Kaggle S6E3, rank 57 of 4,143",
+    "Kaggle S6E3, rank 57 of 4,142",
   ],
 } as const;

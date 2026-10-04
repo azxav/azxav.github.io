@@ -5,6 +5,7 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://azxav.github.io",
+  base: "/",
   trailingSlash: "always",
   compressHTML: true,
   integrations: [

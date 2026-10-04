@@ -31,16 +31,20 @@ const { project } = Astro.props;
     <h1 class="page-title">{project.title}</h1>
     <p class="dek">{project.summary}</p>
     {
-      project.stat && (
-        <p class="stat">
-          <b>{project.stat.value}</b>
-          <span>{project.stat.label}</span>
-        </p>
+      (project.stats ?? (project.stat ? [project.stat] : [])).length > 0 && (
+        <div class="stats">
+          {(project.stats ?? (project.stat ? [project.stat] : [])).map((item) => (
+            <p class="stat">
+              <b>{item.value}</b>
+              <span>{item.label}</span>
+            </p>
+          ))}
+        </div>
       )
     }
     <p class="links">
-      <a href={project.repo}>GitHub</a>
       {project.links?.map((link) => <a href={link.href}>{link.label}</a>)}
+      <a href={project.repo}>GitHub</a>
     </p>
     {project.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
     {

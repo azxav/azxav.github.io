@@ -32,6 +32,7 @@ export interface Project {
   sections?: ProjectSection[];
   stack?: string[];
   stat?: ProjectStat;
+  stats?: ProjectStat[];
   todo?: ProjectTodo;
 }
 
@@ -77,12 +78,12 @@ export const projects: Project[] = [
     title: "KuaiRand",
     kind: "personal",
     summary:
-      "Two-stage recommender MVP: retrieval, a CatBoost ranker, and a FastAPI service.",
+      "Two-stage recommender. Calibrated CatBoost ranker AUC 0.644 vs 0.572 for popularity.",
     repo: "https://github.com/azxav/recsys_kuirand",
     paragraphs: [
       "A personal recommender MVP on the KuaiRand dataset. Retrieval proposes candidates. A ranker orders them. A small service returns the slate.",
       "Retrieval uses implicit ALS, BPR, and a PyTorch two-tower model. Ranking uses CatBoost. The API is FastAPI. Redis Streams log impressions for a worker, with ClickHouse, Postgres, and Qdrant in the stack, and MLflow for runs.",
-      "This is an MVP, not a production traffic system. No offline or online metrics are stated here because the repository README does not report them.",
+      "On the unbiased random-policy log, the calibrated CatBoost ranker reaches AUC 0.644, against 0.572 for popularity.",
     ],
     sections: [
       {
@@ -111,7 +112,7 @@ export const projects: Project[] = [
     slug: "kaggle-s6e3",
     title: "Kaggle S6E3",
     kind: "competition",
-    summary: "Predict Customer Churn. Rank 57 of 4,143.",
+    summary: "Predict Customer Churn. Rank 57 of 4,142, score 0.91824.",
     repo: "https://github.com/azxav/kaggle-S6E3",
     links: [
       {
@@ -119,19 +120,15 @@ export const projects: Project[] = [
         href: "https://www.kaggle.com/competitions/playground-series-s6e3",
       },
     ],
-    stat: { value: "57 / 4,143", label: "Leaderboard rank" },
+    stats: [
+      { value: "57 / 4,142", label: "Leaderboard rank" },
+      { value: "0.91824", label: "Score" },
+    ],
     paragraphs: [
       "Personal entry in Kaggle Playground Series S6E3, Predict Customer Churn. The public task is to predict the probability that a customer churns. Submissions are scored with ROC-AUC.",
-      "The only result this site reports is the rank on the résumé: 57 of 4,143.",
+      "Leaderboard rank 57 of 4,142, with score 0.91824.",
+      "The approach is feature-family sweeps, GBDTs, tabular deep nets, DVAE features, and stacking.",
     ],
-    todo: {
-      title: "Approach",
-      body: "The repository README does not describe the model, features, or validation. Nothing here should be read as a method write-up.",
-      items: [
-        "Model, features, and validation setup",
-        "What to say about the 57 / 4,143 result in an interview",
-      ],
-    },
   },
   {
     slug: "2brain",
@@ -140,19 +137,13 @@ export const projects: Project[] = [
     summary:
       "Corporate AI assistant with a managed memory layer, built on licensed gbrain.",
     repo: "https://github.com/azxav/2brain-techawards",
+    links: [{ label: "2brainai.tech", href: "https://2brainai.tech" }],
     paragraphs: [
-      "2Brain is a corporate AI assistant with a managed memory layer. Notes, documents, conversations, and connected sources become a shared record that people and agents can query, with citations and access controls, instead of a chat that forgets where an answer came from.",
-      "The public repository is an incubation edition built on Garry Tan’s licensed gbrain. Command-line names stay gbrain so the project remains compatible with that source. The license is MIT, and the copyright notice from the licensed snapshot is kept.",
+      "2Brain is a corporate AI assistant with a managed memory layer. It is the assembled product: permission-aware retrieval, and agents that cite their sources.",
+      "Notes, documents, conversations, and connected sources become a shared record people and agents can query, instead of a chat that forgets where an answer came from.",
+      "It is built on Garry Tan’s licensed gbrain. Command-line names stay gbrain so the project remains compatible with that source. The license is MIT, and the copyright notice from the licensed snapshot is kept.",
     ],
     stack: ["Bun", "PGLite", "Postgres", "pgvector", "MCP"],
-    todo: {
-      title: "What I built",
-      body: "The product above describes the assistant. It does not list what Azizbek added on top of the licensed gbrain source. That list is not in the materials used to build this site.",
-      items: [
-        "Modules, changes, or product behavior he authored",
-        "What he would demo in an interview",
-      ],
-    },
   },
   {
     slug: "kgmon",
