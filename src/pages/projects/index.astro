@@ -1,0 +1,20 @@
+---
+import ProjectIndex from "../../components/ProjectIndex.astro";
+import Base from "../../layouts/Base.astro";
+import { profile } from "../../data/profile";
+
+const description =
+  "Personal projects and one Kaggle entry: Traffic Vision, KuaiRand, S6E3, 2Brain, KGMON, and Orbit Wars.";
+---
+
+<Base title="Projects" description={description}>
+  <div slot="intro">
+    <p class="meta">
+      <a class="wordmark" href="/">{profile.name}</a>
+      <span>{profile.location}</span>
+    </p>
+  </div>
+  <h1 class="page-title">Projects</h1>
+  <p class="dek">Personal projects and one competition entry. Employment is under Experience.</p>
+  <ProjectIndex />
+</Base>

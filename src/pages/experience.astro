@@ -1,0 +1,67 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+
+const description =
+  "AI and ML developer at Mutolaa and SATashkent, with education, certifications, honours, and skills.";
+---
+
+<Base title="Experience" description={description}>
+  <div slot="intro">
+    <p class="meta">
+      <a class="wordmark" href="/">{profile.name}</a>
+      <span>{profile.location}</span>
+    </p>
+  </div>
+  <article>
+    <h1 class="page-title">Experience</h1>
+    <p class="dek">Two roles from the résumé. Honours below are competitions, not jobs.</p>
+    {
+      profile.roles.map((role) => (
+        <section class="job">
+          <h2>{role.org}</h2>
+          <p class="title">{role.title}</p>
+          <p class="when">{role.dates}</p>
+          <ul class="plain-list">
+            {role.bullets.map((bullet) => (
+              <li>{bullet}</li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+
+    <section class="section">
+      <h2>Education</h2>
+      <ul class="plain-list">
+        <li>
+          {profile.education.school} — {profile.education.credential}, {profile.education.years}
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Certifications</h2>
+      <ul class="plain-list">
+        {profile.certifications.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Honours</h2>
+      <ul class="plain-list">
+        {profile.honours.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Skills</h2>
+      <ul class="stack">
+        {profile.skills.technical.map((skill) => <li>{skill}</li>)}
+      </ul>
+      <ul class="stack">
+        {profile.skills.tools.map((skill) => <li>{skill}</li>)}
+      </ul>
+    </section>
+  </article>
+</Base>

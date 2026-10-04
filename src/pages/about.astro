@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+
+const description =
+  "ML engineer in Tashkent, studying AI and Robotics at New Uzbekistan University. Skills, languages, and a short introduction.";
+---
+
+<Base title="About" description={description}>
+  <div slot="intro">
+    <p class="meta">
+      <a class="wordmark" href="/">{profile.name}</a>
+      <span>{profile.location}</span>
+    </p>
+  </div>
+  <article class="prose">
+    <h1 class="page-title">About</h1>
+    <p>
+      Azizbek Xasanov is an ML engineer in {profile.location}. He is studying for a
+      {profile.education.credential} at {profile.education.school} ({profile.education.years}).
+    </p>
+    <p>
+      At Mutolaa he worked on a retrieval-augmented generation system and on data preparation
+      for a text-to-speech model. At SATashkent he worked on adaptive testing and on
+      VideoExplanation, which generates an animation from a SAT question. Public projects are
+      where the agent and automation work sits: a corporate assistant with a managed memory
+      layer, a recommender service, a Kaggle workflow, and a behavioral-cloning agent.
+    </p>
+    <p>He is open to ML Engineer and AI Engineer roles.</p>
+
+    <section class="section">
+      <h2>Education</h2>
+      <p>
+        {profile.education.school}<br />
+        {profile.education.credential}, {profile.education.years}
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Skills</h2>
+      <ul class="stack">
+        {profile.skills.technical.map((skill) => <li>{skill}</li>)}
+      </ul>
+      <ul class="stack">
+        {profile.skills.tools.map((skill) => <li>{skill}</li>)}
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Languages</h2>
+      <ul class="plain-list">
+        {
+          profile.languages.map((language) => (
+            <li>
+              {language.name}
+              {language.level ? ` — ${language.level}` : ""}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
+</Base>

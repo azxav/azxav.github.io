@@ -1,0 +1,41 @@
+---
+import ProjectIndex from "../components/ProjectIndex.astro";
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+
+const description =
+  "Azizbek Xasanov is an ML engineer in Tashkent. He builds models, AI agents, and automation, and is open to ML Engineer and AI Engineer roles.";
+---
+
+<Base title={`${profile.name} — ML Engineer`} description={description} person>
+  <div slot="intro">
+    <p class="meta">
+      <span>Portfolio</span>
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>
+    </p>
+    <h1 class="name">Azizbek <span>Xasanov</span></h1>
+    <p class="role">{profile.title} · {profile.location}</p>
+  </div>
+  <h2 class="kicker">Selected work</h2>
+  <ProjectIndex />
+  <div slot="aside">
+    <p class="bio">
+      ML engineer in Tashkent. I train models, and I ship the agents and automation around them.
+    </p>
+    <p class="bio">
+      Studying AI &amp; Robotics at {profile.education.school}, {profile.education.years}.
+    </p>
+    <p class="bio">Open to ML Engineer and AI Engineer roles.</p>
+    <h2 class="kicker">Work</h2>
+    <ul class="mini">
+      {
+        profile.roles.map((role) => (
+          <li>
+            <span>{role.org}</span>
+            <span>{role.year}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Base>

@@ -1,0 +1,57 @@
+---
+import "../styles/global.css";
+import GrainField from "../components/GrainField.astro";
+import Seo from "../components/Seo.astro";
+import SiteFrame from "../components/SiteFrame.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  person?: boolean;
+}
+
+const { title, description, noindex = false, person = false } = Astro.props;
+const hasAside = Astro.slots.has("aside");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script is:inline>
+      (function () {
+        try {
+          const allowed = { light: 1, dark: 1, mono: 1 };
+          const q = new URLSearchParams(location.search).get("theme");
+          const saved = localStorage.getItem("theme");
+          const theme = allowed[q] ? q : allowed[saved] ? saved : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = theme;
+        } catch {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <Seo title={title} description={description} noindex={noindex} person={person} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <GrainField />
+    <SiteFrame hasAside={hasAside}>
+      <slot name="intro" slot="intro" />
+      <slot />
+      {hasAside && <slot name="aside" slot="aside" />}
+    </SiteFrame>
+    <script>
+      import { mountGrain } from "../scripts/grain";
+      import { mountTheme } from "../scripts/theme";
+
+      mountTheme();
+      mountGrain();
+    </script>
+  </body>
+</html>

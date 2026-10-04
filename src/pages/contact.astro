@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+
+const description =
+  "Email azxav000@gmail.com. GitHub azxav. Open to ML Engineer and AI Engineer roles.";
+---
+
+<Base title="Contact" description={description}>
+  <div slot="intro">
+    <p class="meta">
+      <a class="wordmark" href="/">{profile.name}</a>
+      <span>{profile.location}</span>
+    </p>
+  </div>
+  <article>
+    <h1 class="page-title">Contact</h1>
+    <p class="dek">Open to ML Engineer and AI Engineer roles.</p>
+    <ul class="contact-list">
+      <li>
+        <span class="label">Email</span>
+        <a class="email" href={`mailto:${profile.email}`}>{profile.email}</a>
+      </li>
+      <li>
+        <span class="label">GitHub</span>
+        <a href={profile.github}>{profile.githubHandle}</a>
+      </li>
+      <li>
+        <span class="label">LinkedIn</span>
+        <a href={profile.linkedin}>azizbek-xasanov</a>
+      </li>
+      <li>
+        <span class="label">Location</span>
+        {profile.location}
+      </li>
+    </ul>
+  </article>
+</Base>

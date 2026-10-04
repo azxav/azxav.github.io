@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://azxav.github.io/sitemap-index.xml

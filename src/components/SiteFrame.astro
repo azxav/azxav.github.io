@@ -1,0 +1,57 @@
+---
+import ThemeSwitch from "./ThemeSwitch.astro";
+
+interface Props {
+  hasAside?: boolean;
+}
+
+const { hasAside = false } = Astro.props;
+
+const path = Astro.url.pathname;
+const section = path.startsWith("/projects")
+  ? "projects"
+  : path.startsWith("/about")
+    ? "about"
+    : path.startsWith("/experience")
+      ? "experience"
+      : path.startsWith("/contact")
+        ? "contact"
+        : "home";
+
+const links = [
+  { href: "/projects/", id: "projects", label: "Projects" },
+  { href: "/about/", id: "about", label: "About" },
+  { href: "/experience/", id: "experience", label: "Experience" },
+  { href: "/contact/", id: "contact", label: "Contact" },
+];
+
+const year = 2026;
+---
+
+<div class:list={["frame", { "has-aside": hasAside }]}>
+  <header class="intro">
+    <slot name="intro" />
+  </header>
+  <div class="rail">
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} aria-current={section === link.id ? "page" : undefined}>
+                <span class="mark" aria-hidden="true"></span>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <ThemeSwitch />
+  </div>
+  <main id="content" class="main">
+    <slot />
+  </main>
+  {hasAside && <aside class="aside"><slot name="aside" /></aside>}
+  <p class="legal">© {year} Azizbek Xasanov</p>
+</div>

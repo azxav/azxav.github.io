@@ -1,0 +1,72 @@
+---
+import Todo from "../../components/Todo.astro";
+import Base from "../../layouts/Base.astro";
+import { kindLabel, projects, type Project } from "../../data/projects";
+import { profile } from "../../data/profile";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<Base title={project.title} description={project.summary}>
+  <div slot="intro">
+    <p class="meta">
+      <a class="wordmark" href="/">{profile.name}</a>
+      <span>{profile.location}</span>
+    </p>
+  </div>
+  <article class="prose">
+    <p class="back"><a href="/projects/">All projects</a></p>
+    <p class="kicker">{kindLabel[project.kind]}</p>
+    <h1 class="page-title">{project.title}</h1>
+    <p class="dek">{project.summary}</p>
+    {
+      project.stat && (
+        <p class="stat">
+          <b>{project.stat.value}</b>
+          <span>{project.stat.label}</span>
+        </p>
+      )
+    }
+    <p class="links">
+      <a href={project.repo}>GitHub</a>
+      {project.links?.map((link) => <a href={link.href}>{link.label}</a>)}
+    </p>
+    {project.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    {
+      project.sections?.map((section) => (
+        <section>
+          <h2>{section.heading}</h2>
+          <ol>
+            {section.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ol>
+        </section>
+      ))
+    }
+    {
+      project.stack && (
+        <section>
+          <h2>Stack</h2>
+          <ul class="stack">
+            {project.stack.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+    {project.todo && <Todo title={project.todo.title} body={project.todo.body} items={project.todo.items} />}
+  </article>
+</Base>

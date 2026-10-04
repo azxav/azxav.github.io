@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  items: string[];
+}
+
+const { title, body, items } = Astro.props;
+---
+
+<section class="todo" aria-label="Content still needed from Azizbek">
+  <p class="kicker">TODO — needs content from Azizbek</p>
+  <h2>{title}</h2>
+  <p>{body}</p>
+  <ul>
+    {items.map((item) => <li>{item}</li>)}
+  </ul>
+</section>
