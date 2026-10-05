@@ -91,6 +91,24 @@ export const projects: Project[] = [
     stack: ["Python", "FastAPI", "LangGraph", "Qdrant", "Docker"],
   },
   {
+    slug: "uzbek-voice-agent",
+    title: "Uzbek Voice Agent",
+    kind: "personal",
+    summary:
+      "Uzbek speech-to-text demo: FastAPI upload path plus optional LiveKit worker with NavAI whisper-small.",
+    repo: "https://github.com/azxav/uzbek-voice-agent",
+    stats: [
+      { value: "14.29%", label: "WER on 7 unique FLEURS uz_uz test-prefix utterances" },
+      { value: "7.00%", label: "CER on the same 7 utterances" },
+    ],
+    paragraphs: [
+      "I built an Uzbek speech-to-text demo. POST /transcribe takes a wav, flac, or ogg file and returns the transcript plus a local echo line. That HTTP path runs with no LiveKit account.",
+      "A LiveKit worker is optional. I can start a local server from Compose, or point the same worker at LiveKit Cloud. Speech-to-text is NavAI whisper-small. I left TTS unset, so the room gets text and does not speak audio back.",
+      "On 7 unique FLEURS uz_uz test-prefix utterances I measured WER 14.29% and CER 7.00%. That is my slice, not NavAI’s full FLEURS number (their card is about 16.96 WER). The session shape follows the LiveKit agent starter (MIT); the NavAI weights are Apache-2.0.",
+    ],
+    stack: ["Python", "FastAPI", "LiveKit", "Whisper", "Docker"],
+  },
+  {
     slug: "kaggle-s6e3",
     title: "Kaggle S6E3",
     kind: "competition",
