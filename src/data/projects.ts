@@ -47,7 +47,94 @@ export const kindLabel: Record<ProjectKind, string> = {
  * home index, the projects page, and /projects/[slug]/.
  */
 export const projects: Project[] = [
-  {
+{
+    slug: "2brain",
+    title: "2Brain",
+    kind: "personal",
+    summary:
+      "Corporate AI assistant with a managed memory layer, built on licensed gbrain.",
+    repo: "https://github.com/azxav/2brain-techawards",
+    links: [{ label: "2brainai.tech", href: "https://2brainai.tech" }],
+    paragraphs: [
+      "2Brain is a corporate AI assistant with a managed memory layer. It is the assembled product: permission-aware retrieval, and agents that cite their sources.",
+      "Notes, documents, conversations, and connected sources become a shared record people and agents can query, instead of a chat that forgets where an answer came from.",
+      "It is built on Garry Tan’s licensed gbrain. Command-line names stay gbrain so the project remains compatible with that source. The license is MIT, and the copyright notice from the licensed snapshot is kept.",
+    ],
+    stack: ["Bun", "PGLite", "Postgres", "pgvector", "MCP"],
+  },
+{
+    slug: "kaggle-s6e3",
+    title: "Kaggle S6E3",
+    kind: "competition",
+    summary: "Predict Customer Churn. Rank 57 of 4,142, score 0.91824.",
+    repo: "https://github.com/azxav/kaggle-S6E3",
+    links: [
+      {
+        label: "Competition",
+        href: "https://www.kaggle.com/competitions/playground-series-s6e3",
+      },
+    ],
+    stats: [
+      { value: "57 / 4,142", label: "Leaderboard rank" },
+      { value: "0.91824", label: "Score" },
+    ],
+    paragraphs: [
+      "Personal entry in Kaggle Playground Series S6E3, Predict Customer Churn. The public task is to predict the probability that a customer churns. Submissions are scored with ROC-AUC.",
+      "Leaderboard rank 57 of 4,142, with score 0.91824.",
+      "The approach is feature-family sweeps, GBDTs, tabular deep nets, DVAE features, and stacking.",
+    ],
+  },
+{
+    slug: "kgmon",
+    title: "KGMON",
+    kind: "personal",
+    summary:
+      "Automation for a Kaggle competition, from the workspace through a guarded submission.",
+    repo: "https://github.com/azxav/kgmon",
+    paragraphs: [
+      "KGMON is a personal, Codex-compatible plugin for running a Kaggle competition as a repeatable workflow. Platform access wraps the vendored shepsci/kaggle-skill. The rest is a local spine for the workspace, checks, experiments, and packaging.",
+      "It builds a competition workspace, profiles the data, plans validation, and blocks that plan when leakage guards fire. Experiments record lineage. Ensemble search and a final package follow. Submission stays guarded and asks for confirmation.",
+    ],
+    sections: [
+      {
+        heading: "Workflow",
+        items: [
+          "Bootstrap a competition workspace and capture the rules",
+          "Profile train, test, and sample files, and infer the task contract",
+          "Plan validation folds and stop when leakage risk is high",
+          "Run experiments, search ensembles, and write a final package",
+          "Push a notebook and submit only with an explicit confirmation",
+        ],
+      },
+    ],
+    stack: ["Python", "Typer", "SQLite", "MCP"],
+  },
+{
+    slug: "orbit-wars",
+    title: "Orbit Wars",
+    kind: "personal",
+    summary:
+      "Behavioral cloning from replays to a board-level policy and an exportable agent.",
+    repo: "https://github.com/azxav/orbit_warsv2",
+    paragraphs: [
+      "A personal behavioral-cloning pipeline for Orbit Wars. Replay JSON becomes a dataset. A neural policy trains on that dataset. A checkpoint exports to a single Python file that can be submitted.",
+      "The policy is an encoder–decoder with attention. Training checkpoints store weights, optimizer state, and RNG state so a run can resume. The repository does not report match results, so this page does not either.",
+    ],
+    sections: [
+      {
+        heading: "Steps",
+        items: [
+          "Build a dataset from replay JSON, with a held-out slice",
+          "Validate unmatched and ambiguous labels",
+          "Train the behavioral-cloning policy",
+          "Evaluate a checkpoint",
+          "Export a runnable Python agent",
+        ],
+      },
+    ],
+    stack: ["Python", "PyTorch"],
+  },
+{
     slug: "traffic-vision",
     title: "Traffic Vision",
     kind: "personal",
@@ -73,7 +160,7 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "YOLO11s", "ByteTrack", "PyTorch"],
   },
-  {
+{
     slug: "kuairand",
     title: "KuaiRand",
     kind: "personal",
@@ -107,93 +194,6 @@ export const projects: Project[] = [
       "Qdrant",
       "MLflow",
     ],
-  },
-  {
-    slug: "kaggle-s6e3",
-    title: "Kaggle S6E3",
-    kind: "competition",
-    summary: "Predict Customer Churn. Rank 57 of 4,142, score 0.91824.",
-    repo: "https://github.com/azxav/kaggle-S6E3",
-    links: [
-      {
-        label: "Competition",
-        href: "https://www.kaggle.com/competitions/playground-series-s6e3",
-      },
-    ],
-    stats: [
-      { value: "57 / 4,142", label: "Leaderboard rank" },
-      { value: "0.91824", label: "Score" },
-    ],
-    paragraphs: [
-      "Personal entry in Kaggle Playground Series S6E3, Predict Customer Churn. The public task is to predict the probability that a customer churns. Submissions are scored with ROC-AUC.",
-      "Leaderboard rank 57 of 4,142, with score 0.91824.",
-      "The approach is feature-family sweeps, GBDTs, tabular deep nets, DVAE features, and stacking.",
-    ],
-  },
-  {
-    slug: "2brain",
-    title: "2Brain",
-    kind: "personal",
-    summary:
-      "Corporate AI assistant with a managed memory layer, built on licensed gbrain.",
-    repo: "https://github.com/azxav/2brain-techawards",
-    links: [{ label: "2brainai.tech", href: "https://2brainai.tech" }],
-    paragraphs: [
-      "2Brain is a corporate AI assistant with a managed memory layer. It is the assembled product: permission-aware retrieval, and agents that cite their sources.",
-      "Notes, documents, conversations, and connected sources become a shared record people and agents can query, instead of a chat that forgets where an answer came from.",
-      "It is built on Garry Tan’s licensed gbrain. Command-line names stay gbrain so the project remains compatible with that source. The license is MIT, and the copyright notice from the licensed snapshot is kept.",
-    ],
-    stack: ["Bun", "PGLite", "Postgres", "pgvector", "MCP"],
-  },
-  {
-    slug: "kgmon",
-    title: "KGMON",
-    kind: "personal",
-    summary:
-      "Automation for a Kaggle competition, from the workspace through a guarded submission.",
-    repo: "https://github.com/azxav/kgmon",
-    paragraphs: [
-      "KGMON is a personal, Codex-compatible plugin for running a Kaggle competition as a repeatable workflow. Platform access wraps the vendored shepsci/kaggle-skill. The rest is a local spine for the workspace, checks, experiments, and packaging.",
-      "It builds a competition workspace, profiles the data, plans validation, and blocks that plan when leakage guards fire. Experiments record lineage. Ensemble search and a final package follow. Submission stays guarded and asks for confirmation.",
-    ],
-    sections: [
-      {
-        heading: "Workflow",
-        items: [
-          "Bootstrap a competition workspace and capture the rules",
-          "Profile train, test, and sample files, and infer the task contract",
-          "Plan validation folds and stop when leakage risk is high",
-          "Run experiments, search ensembles, and write a final package",
-          "Push a notebook and submit only with an explicit confirmation",
-        ],
-      },
-    ],
-    stack: ["Python", "Typer", "SQLite", "MCP"],
-  },
-  {
-    slug: "orbit-wars",
-    title: "Orbit Wars",
-    kind: "personal",
-    summary:
-      "Behavioral cloning from replays to a board-level policy and an exportable agent.",
-    repo: "https://github.com/azxav/orbit_warsv2",
-    paragraphs: [
-      "A personal behavioral-cloning pipeline for Orbit Wars. Replay JSON becomes a dataset. A neural policy trains on that dataset. A checkpoint exports to a single Python file that can be submitted.",
-      "The policy is an encoder–decoder with attention. Training checkpoints store weights, optimizer state, and RNG state so a run can resume. The repository does not report match results, so this page does not either.",
-    ],
-    sections: [
-      {
-        heading: "Steps",
-        items: [
-          "Build a dataset from replay JSON, with a held-out slice",
-          "Validate unmatched and ambiguous labels",
-          "Train the behavioral-cloning policy",
-          "Evaluate a checkpoint",
-          "Export a runnable Python agent",
-        ],
-      },
-    ],
-    stack: ["Python", "PyTorch"],
   },
 ];
 
