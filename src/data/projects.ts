@@ -52,13 +52,13 @@ export const projects: Project[] = [
     title: "2Brain",
     kind: "personal",
     summary:
-      "Corporate AI assistant with a managed memory layer, built on licensed gbrain.",
+      "Corporate AI assistant with a managed memory layer, permission-aware retrieval, and cited answers.",
     repo: "https://github.com/azxav/2brain-techawards",
     links: [{ label: "2brainai.tech", href: "https://2brainai.tech" }],
     paragraphs: [
-      "2Brain is a corporate AI assistant with a managed memory layer. It is the assembled product: permission-aware retrieval, and agents that cite their sources.",
+      "2Brain is a corporate AI assistant with a managed memory layer. Permission-aware retrieval feeds agents that cite their sources or name the evidence gap.",
       "Notes, documents, conversations, and connected sources become a shared record people and agents can query, instead of a chat that forgets where an answer came from.",
-      "It is built on Garry Tan’s licensed gbrain. Command-line names stay gbrain so the project remains compatible with that source. The license is MIT, and the copyright notice from the licensed snapshot is kept.",
+      "Memory layer uses gbrain (MIT).",
     ],
     stack: ["Bun", "PGLite", "Postgres", "pgvector", "MCP"],
   },
@@ -70,9 +70,9 @@ export const projects: Project[] = [
       "Multi-agent LangGraph platform with per-run cost caps, pack registry, and golden evals (mock LLM).",
     repo: "https://github.com/azxav/agent-platform",
     paragraphs: [
-      "A personal portfolio fork of a multi-agent platform, inspired by Brescou/langgraph-agent-stack and credited under that project’s MIT license. It is not a bank product.",
-      "The service is FastAPI with server-sent events. Packs in the registry are research_analysis, meeting_prep, and financial_memo, the last of those a sample pack. Each run has a cost cap.",
-      "The suite has 908 tests. Golden evals are 10/10 when the model is mocked.",
+      "FastAPI multi-agent service with server-sent events, a pack registry, and a cost cap on every run. Packs: research_analysis, meeting_prep, and financial_memo (sample). Not a bank product.",
+      "908 tests. Golden evals are 10/10 when the model is mocked.",
+      "Includes code from Brescou/langgraph-agent-stack (MIT).",
     ],
     stack: ["Python", "FastAPI", "LangGraph", "Prometheus", "Docker"],
   },
@@ -84,7 +84,7 @@ export const projects: Project[] = [
       "Multilingual bank-document RAG with LangGraph, Qdrant citations, and an offline demo.",
     repo: "https://github.com/azxav/bank-doc-rag",
     paragraphs: [
-      "A personal retrieval assistant over synthetic bank-style documents in Uzbek, Russian, and English. It is not affiliated with any bank. Answers cite passages stored in Qdrant, and the graph is LangGraph.",
+      "Retrieval assistant over synthetic bank-style documents in Uzbek, Russian, and English. Answers cite passages stored in Qdrant through a LangGraph graph. Not affiliated with any bank.",
       "The demo runs offline without API keys. OpenRouter is optional.",
       "Validation is partial. The test split did not run because OpenRouter returned 402, so this page does not claim a full RAGAS result.",
     ],
@@ -107,9 +107,9 @@ export const projects: Project[] = [
       { value: "0.91824", label: "Score" },
     ],
     paragraphs: [
-      "Personal entry in Kaggle Playground Series S6E3, Predict Customer Churn. The public task is to predict the probability that a customer churns. Submissions are scored with ROC-AUC.",
+      "Kaggle Playground Series S6E3 entry: predict the probability that a customer churns. Scoring is ROC-AUC.",
       "Leaderboard rank 57 of 4,142, with score 0.91824.",
-      "The approach is feature-family sweeps, GBDTs, tabular deep nets, DVAE features, and stacking.",
+      "Feature-family sweeps, GBDTs, tabular deep nets, DVAE features, and stacking.",
     ],
   },
   {
@@ -120,7 +120,7 @@ export const projects: Project[] = [
       "Automation for a Kaggle competition, from the workspace through a guarded submission.",
     repo: "https://github.com/azxav/kgmon",
     paragraphs: [
-      "KGMON is a personal, Codex-compatible plugin for running a Kaggle competition as a repeatable workflow. Platform access wraps the vendored shepsci/kaggle-skill. The rest is a local spine for the workspace, checks, experiments, and packaging.",
+      "Codex-compatible plugin that runs a Kaggle competition as a repeatable local workflow: workspace, checks, experiments, and packaging. Platform access wraps the vendored shepsci/kaggle-skill.",
       "It builds a competition workspace, profiles the data, plans validation, and blocks that plan when leakage guards fire. Experiments record lineage. Ensemble search and a final package follow. Submission stays guarded and asks for confirmation.",
     ],
     sections: [
@@ -145,7 +145,7 @@ export const projects: Project[] = [
       "Behavioral cloning from replays to a board-level policy and an exportable agent.",
     repo: "https://github.com/azxav/orbit_warsv2",
     paragraphs: [
-      "A personal behavioral-cloning pipeline for Orbit Wars. Replay JSON becomes a dataset. A neural policy trains on that dataset. A checkpoint exports to a single Python file that can be submitted.",
+      "Behavioral-cloning pipeline for Orbit Wars. Replay JSON becomes a dataset. A neural policy trains on that dataset. A checkpoint exports to a single Python file that can be submitted.",
       "The policy is an encoder–decoder with attention. Training checkpoints store weights, optimizer state, and RNG state so a run can resume. The repository does not report match results, so this page does not either.",
     ],
     sections: [
@@ -170,7 +170,7 @@ export const projects: Project[] = [
       "Fixed-camera traffic event detection with YOLO11s, ByteTrack, and junction rules.",
     repo: "https://github.com/azxav/traffic-vision",
     paragraphs: [
-      "Traffic Vision is a personal project for offline event detection on a fixed camera. It marks congestion, failure to yield, and red-light running, and it sketches a causal accident-risk score.",
+      "Offline event detection on a fixed camera. Marks congestion, failure to yield, and red-light running, and sketches a causal accident-risk score.",
       "A hand-labelled junction is registered to the first frame. YOLO11s and ByteTrack run every third frame. Temporal rules then read motion, lane, queue, and signal features. The risk score combines time-to-collision, hard braking, and movement on a red signal.",
       "That risk curve is an experimental baseline. The development set has no accident labels, so it is not calibrated. Sample-set notes and timing live in the repository; this page does not repeat them.",
     ],
@@ -196,7 +196,7 @@ export const projects: Project[] = [
       "Two-stage recommender. Calibrated CatBoost ranker AUC 0.644 vs 0.572 for popularity.",
     repo: "https://github.com/azxav/recsys_kuirand",
     paragraphs: [
-      "A personal recommender MVP on the KuaiRand dataset. Retrieval proposes candidates. A ranker orders them. A small service returns the slate.",
+      "Two-stage recommender on the KuaiRand dataset. Retrieval proposes candidates. A ranker orders them. A small service returns the slate.",
       "Retrieval uses implicit ALS, BPR, and a PyTorch two-tower model. Ranking uses CatBoost. The API is FastAPI. Redis Streams log impressions for a worker, with ClickHouse, Postgres, and Qdrant in the stack, and MLflow for runs.",
       "On the unbiased random-policy log, the calibrated CatBoost ranker reaches AUC 0.644, against 0.572 for popularity.",
     ],
