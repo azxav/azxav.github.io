@@ -47,7 +47,7 @@ export const kindLabel: Record<ProjectKind, string> = {
  * home index, the projects page, and /projects/[slug]/.
  */
 export const projects: Project[] = [
-{
+  {
     slug: "2brain",
     title: "2Brain",
     kind: "personal",
@@ -62,7 +62,35 @@ export const projects: Project[] = [
     ],
     stack: ["Bun", "PGLite", "Postgres", "pgvector", "MCP"],
   },
-{
+  {
+    slug: "agent-platform",
+    title: "Agent Platform",
+    kind: "personal",
+    summary:
+      "Multi-agent LangGraph platform with per-run cost caps, pack registry, and golden evals (mock LLM).",
+    repo: "https://github.com/azxav/agent-platform",
+    paragraphs: [
+      "A personal portfolio fork of a multi-agent platform, inspired by Brescou/langgraph-agent-stack and credited under that project’s MIT license. It is not a bank product.",
+      "The service is FastAPI with server-sent events. Packs in the registry are research_analysis, meeting_prep, and financial_memo, the last of those a sample pack. Each run has a cost cap.",
+      "The suite has 908 tests. Golden evals are 10/10 when the model is mocked.",
+    ],
+    stack: ["Python", "FastAPI", "LangGraph", "Prometheus", "Docker"],
+  },
+  {
+    slug: "bank-doc-rag",
+    title: "Bank Doc RAG",
+    kind: "personal",
+    summary:
+      "Multilingual bank-document RAG with LangGraph, Qdrant citations, and an offline demo.",
+    repo: "https://github.com/azxav/bank-doc-rag",
+    paragraphs: [
+      "A personal retrieval assistant over synthetic bank-style documents in Uzbek, Russian, and English. It is not affiliated with any bank. Answers cite passages stored in Qdrant, and the graph is LangGraph.",
+      "The demo runs offline without API keys. OpenRouter is optional.",
+      "Validation is partial. The test split did not run because OpenRouter returned 402, so this page does not claim a full RAGAS result.",
+    ],
+    stack: ["Python", "FastAPI", "LangGraph", "Qdrant", "Docker"],
+  },
+  {
     slug: "kaggle-s6e3",
     title: "Kaggle S6E3",
     kind: "competition",
@@ -84,7 +112,7 @@ export const projects: Project[] = [
       "The approach is feature-family sweeps, GBDTs, tabular deep nets, DVAE features, and stacking.",
     ],
   },
-{
+  {
     slug: "kgmon",
     title: "KGMON",
     kind: "personal",
@@ -109,7 +137,7 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "Typer", "SQLite", "MCP"],
   },
-{
+  {
     slug: "orbit-wars",
     title: "Orbit Wars",
     kind: "personal",
@@ -134,7 +162,7 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "PyTorch"],
   },
-{
+  {
     slug: "traffic-vision",
     title: "Traffic Vision",
     kind: "personal",
@@ -160,7 +188,7 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "YOLO11s", "ByteTrack", "PyTorch"],
   },
-{
+  {
     slug: "kuairand",
     title: "KuaiRand",
     kind: "personal",
